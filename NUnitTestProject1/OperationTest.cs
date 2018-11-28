@@ -1,21 +1,25 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using NUnit.Framework;
 using SimpleCalc;
 
-namespace UnitTestProject
+namespace Tests
 {
-    [TestClass]
-    public class ValidOperationTest
+    public class OperationTest
     {
-        [TestMethod]
+        [SetUp]
+        public void Setup()
+        {
+        }
+
+        [Test]
         public void TestSumm()
         {
             double a = 5, b = 10;
             double expected = 15;
             double actual = Operations.Summ(a, b);
-            Assert.AreEqual(expected,actual);
+            Assert.AreEqual(expected, actual);
         }
-        [TestMethod]
+        [Test]
         public void TestSubtraction()
         {
             double a = 37, b = 19;
@@ -23,7 +27,7 @@ namespace UnitTestProject
             double actual = Operations.Subtraction(a, b);
             Assert.AreEqual(expected, actual);
         }
-        [TestMethod]
+        [Test]
         public void TestMultiplication()
         {
             double a = 4.4, b = 5;
@@ -31,7 +35,7 @@ namespace UnitTestProject
             double actual = Operations.Multiplication(a, b);
             Assert.AreEqual(expected, actual);
         }
-        [TestMethod]
+        [Test]
         public void TestDivision()
         {
             double a = 121, b = 11;
@@ -40,7 +44,7 @@ namespace UnitTestProject
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]
+        [Test]
         public void TestNotEqualSumm()
         {
             double a = 15, b = 9;
@@ -48,7 +52,7 @@ namespace UnitTestProject
             double actual = Operations.Summ(a, b);
             Assert.AreNotEqual(expected, actual);
         }
-        [TestMethod]
+        [Test]
         public void TestNotEqualSubtraction()
         {
             double a = 29, b = 68;
@@ -56,7 +60,7 @@ namespace UnitTestProject
             double actual = Operations.Subtraction(a, b);
             Assert.AreNotEqual(expected, actual);
         }
-        [TestMethod]
+        [Test]
         public void TestNotEqualMultiplication()
         {
             double a = 14, b = 5;
@@ -64,7 +68,7 @@ namespace UnitTestProject
             double actual = Operations.Multiplication(a, b);
             Assert.AreNotEqual(expected, actual);
         }
-        [TestMethod]
+        [Test]
         public void TestNotEqualDivision()
         {
             double a = 1, b = 11;
@@ -72,5 +76,24 @@ namespace UnitTestProject
             double actual = Operations.Division(a, b);
             Assert.AreNotEqual(expected, actual);
         }
+
+
+        [Test]
+        public void TestInfinityDivision()
+        {
+            double a = 1, b = 0;
+            double expected = Double.PositiveInfinity;
+            double actual = Operations.Division(a, b);
+            Assert.AreEqual(expected, actual);
+        }
+        [Test]
+        public void TestNaNDivision()
+        {
+            double a = 0, b = 0;
+            double expected = Double.NaN;
+            double actual = Operations.Division(a, b);
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }
