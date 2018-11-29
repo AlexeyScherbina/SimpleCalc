@@ -34,7 +34,10 @@ namespace SimpleCalc
                     case '+': Console.WriteLine(Operations.Summ(a, b)); break;
                     case '-': Console.WriteLine(Operations.Subtraction(a, b)); break;
                     case '*': Console.WriteLine(Operations.Multiplication(a, b)); break;
-                    case '/': Console.WriteLine(Operations.Division(a, b)); break;
+                    case '/':
+                        double res = Operations.Division(a, b);
+                        Console.WriteLine((res==Double.PositiveInfinity || res == Double.NegativeInfinity)?"Infinity":res.ToString());
+                        break;
                     default: Console.WriteLine("Wrong operator"); break;
                 }
             }
